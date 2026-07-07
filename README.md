@@ -1,6 +1,6 @@
 # 🇵🇹 Portugal Through Time
 
-![Portugal Through Time Icon](public/favicon.png)
+![Portugal Through Time Icon](public/favicon.svg)
 
 An interactive web map that shows the territorial evolution of Portugal — from the **Condado Portucalense** (1096) to the present day — through a draggable year slider.
 
