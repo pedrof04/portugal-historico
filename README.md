@@ -1,84 +1,87 @@
-# Portugal Histórico — Mapa Interativo
+# 🇵🇹 Portugal Through Time
 
-Projeto React + Node/Express + Leaflet que mostra a evolução territorial de
-Portugal (do Condado Portucalense até hoje) através de um slider de anos.
+![Portugal Through Time Icon](public/favicon.png)
 
-## ⚠️ Aviso importante sobre os dados
+An interactive web map that shows the territorial evolution of Portugal — from the **Condado Portucalense** (1096) to the present day — through a draggable year slider.
 
-As fronteiras de **1096, 1139, 1147 e 1189** neste projeto são **ilustrativas
-e simplificadas**, desenhadas à mão com base em marcos históricos conhecidos
-(fundação do condado, proclamação do reino, conquista de Lisboa, avanço para
-sul). Não são geometrias historicamente rigorosas — servem para teres uma
-demo funcional. As fronteiras de **1249** (fim da Reconquista) e **2026**
-usam o contorno real e atual de Portugal (fonte livre: johan/world.geo.json),
-já que o território de 1249 é muito próximo do atual.
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black&style=for-the-badge)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&style=for-the-badge)
+![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&logoColor=white&style=for-the-badge)
+![GeoJSON](https://img.shields.io/badge/GeoJSON-Static%20Data-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Educational-lightgrey?style=for-the-badge)
 
-Para uma versão mais precisa, as melhores fontes pagas/robustas são:
-- **Euratlas Georeferenced Historical Vector Data** — shapefiles por século, com licença.
-- Desenhar tu mesmo em **QGIS** ou **geojson.io** com base em atlas históricos (ex: mapas do Instituto Camões, Wikipedia Reconquista).
+## 🗺️ What it does
 
-## Estrutura
+Drag the slider and watch the map update to reflect Portugal's borders at different key moments in history, from the birth of the County of Portugal to the modern nation.
+
+Each snapshot includes a short label describing the historical milestone (e.g. the conquest of Lisbon, the end of the Reconquista, etc.).
+
+## ✨ Features
+
+- Interactive Leaflet map with OpenStreetMap tiles
+- Year slider covering key historical milestones (1096 → 2026)
+- GeoJSON borders loaded dynamically per selected year
+- Clean, minimal UI built with plain CSS (no UI framework needed)
+- Fully static — no backend required
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React + Vite |
+| Map | Leaflet (via react-leaflet) |
+| Data | Static GeoJSON files |
+| Styling | Plain CSS |
+
+## 📂 Project Structure
 
 ```
 portugal-historico/
-├── backend/          # Node + Express — serve os ficheiros GeoJSON
-│   ├── server.js
-│   ├── package.json
-│   └── data/
+├── index.html
+├── vite.config.js
+├── package.json
+├── public/
+│   ├── favicon.svg
+│   ├── favicon.png
+│   └── data/              # Static GeoJSON files, one per historical year
 │       ├── 1096.geojson
 │       ├── 1139.geojson
 │       ├── 1147.geojson
 │       ├── 1189.geojson
 │       ├── 1249.geojson
 │       └── 2026.geojson
-└── frontend/         # React + Vite + Leaflet
-    ├── index.html
-    ├── vite.config.js
-    ├── package.json
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── index.css
-        └── components/
-            └── MapView.jsx
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── index.css
+    └── components/
+        └── MapView.jsx     # Map, slider and fetch logic
 ```
 
-## Como correr
-
-### 1. Backend
+## 🚀 Getting Started
 
 ```bash
-cd backend
-npm install
-npm run start
-# API disponível em http://localhost:3001
-```
-
-### 2. Frontend
-
-```bash
-cd frontend
+git clone https://github.com/your-username/portugal-historico.git
+cd portugal-historico
 npm install
 npm run dev
-# Abre em http://localhost:5173
 ```
 
-## Como funciona
+Open `http://localhost:5173` in your browser.
 
-- O `server.js` expõe `GET /api/borders/:year`, devolvendo o GeoJSON
-  correspondente guardado em `backend/data/`.
-- O `MapView.jsx` no frontend tem um array `YEARS` com os anos-chave
-  disponíveis; ao mover o slider, faz fetch ao backend para o ano
-  selecionado e re-renderiza a camada `<GeoJSON>` no Leaflet.
-- Cada ano tem uma etiqueta (`LABELS`) e uma nota histórica curta.
+## ⚠️ A note on historical accuracy
 
-## Próximos passos sugeridos
+The borders for **1096, 1139, 1147 and 1189** are **illustrative and simplified**, hand-drawn based on well-known Reconquista milestones (foundation of the county, proclamation of the kingdom, conquest of Lisbon, southward expansion). They are not historically precise geometries. The borders for **1249** (end of the Reconquista) and **2026** use Portugal's real, current outline, sourced from a free open dataset.
 
-1. Adicionar mais anos-chave (ex: 1385 Aljubarrota, 1580 União Ibérica,
-   1640 Restauração, 1822 independência do Brasil, 1910 República, 1974
-   Revolução dos Cravos).
-2. Substituir os polígonos ilustrativos por dados mais precisos (Euratlas
-   ou desenhados por ti em QGIS/geojson.io).
-3. Adicionar popups com factos históricos ao clicar no polígono.
-4. Adicionar um botão de "play" para animação automática, se mudares de
-   ideias.
+More accurate historical boundary data can be sourced from providers like [Euratlas](https://www.euratlas.com/), or hand-drawn in tools like QGIS / geojson.io.
+
+## 🧭 Roadmap
+
+- [ ] Add more key years (Aljubarrota 1385, Iberian Union 1580, Restoration 1640, Brazilian independence 1822, Republic 1910, Carnation Revolution 1974)
+- [ ] Replace illustrative borders with more historically accurate data
+- [ ] Add popups with historical facts when clicking a region
+- [ ] Add smooth transition animation between years
+
+## 📄 License
+
+This project is for educational purposes. Map tiles © OpenStreetMap contributors.
