@@ -1,6 +1,8 @@
 # 🇵🇹 Portugal Through Time
 
-![Portugal Through Time Icon](public/favicon.svg)
+<div align="center">
+  <img src="public/favicon.svg" alt="Portugal Through Time Icon" width="150" />
+</div>
 
 An interactive web map that shows the territorial evolution of Portugal — from the **Condado Portucalense** (1096) to the present day — through a draggable year slider.
 
@@ -26,12 +28,12 @@ Each snapshot includes a short label describing the historical milestone (e.g. t
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React + Vite |
-| Map | Leaflet (via react-leaflet) |
-| Data | Static GeoJSON files |
-| Styling | Plain CSS |
+| Layer    | Technology                  |
+| -------- | --------------------------- |
+| Frontend | React + Vite                |
+| Map      | Leaflet (via react-leaflet) |
+| Data     | Static GeoJSON files        |
+| Styling  | Plain CSS                   |
 
 ## 📂 Project Structure
 
