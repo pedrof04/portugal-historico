@@ -13,15 +13,13 @@ const LABELS = {
   2026: 'Portugal atual',
 };
 
-const API_URL = 'http://localhost:3001';
-
 export default function MapView() {
   const [yearIndex, setYearIndex] = useState(0);
   const [geoData, setGeoData] = useState(null);
   const year = YEARS[yearIndex];
 
   useEffect(() => {
-    fetch(`${API_URL}/api/borders/${year}`)
+    fetch(`${import.meta.env.BASE_URL}data/${year}.geojson`)
       .then((res) => res.json())
       .then(setGeoData)
       .catch(() => setGeoData(null));
@@ -31,7 +29,7 @@ export default function MapView() {
     <div>
       <div className="year-display">{year} — {LABELS[year]}</div>
       <div className="note">
-        Fronteiras de {year < 2026 ? '1096–1249' : '2026'} são ilustrativas/simplificadas para fins educativos.
+        Fronteiras de {year < 2026 ? '1096-1249' : '2026'} são ilustrativas/simplificadas para fins educativos.
       </div>
 
       <MapContainer
